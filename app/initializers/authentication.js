@@ -1,10 +1,13 @@
 var SenseAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
 
-    serverTokenEndpoint: '/login',
+    serverTokenEndpoint: 'https://api.sense-os.nl/',
 
     restore: function(properties) {
       return new Ember.RSVP.Promise(function(resolve, reject) {
-          if (!Ember.isEmpty(properties.auth_token) && !Ember.isEmpty(properties.auth_email)) {
+          if (
+            !Ember.isEmpty(properties.auth_token) && 
+            !Ember.isEmpty(properties.auth_email)
+          ) {
             resolve(properties);
           } else {
             reject();
@@ -15,10 +18,11 @@ var SenseAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
     authenticate: function(credentials) {
       return new Ember.RSVP.Promise(function(resolve, reject) {
         var data = {
-          email:    credentials.identification,
-          password: credentials.password
+          username : credentials.identification,
+          /* global CryptoJS */
+          password : CryptoJS.MD5(credentials.password).toString()
         };
-        this.makeRequest(data).then(function(response) {
+        this.makeRequest('login.json', data).then(function(response) {
           Ember.run(function() {
             resolve(response);
           });
@@ -34,16 +38,17 @@ var SenseAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
       return Ember.RSVP.resolve();
     },
 
-    makeRequest: function(data, resolve, reject) {
-      if (!Ember.SimpleAuth.Utils.isSecureUrl(this.serverTokenEndpoint)) {
+    makeRequest: function(path, data, resolve, reject) {
+      var url = this.serverTokenEndpoint + path;
+      if (!Ember.SimpleAuth.Utils.isSecureUrl(url)) {
         Ember.Logger.warn('Credentials are transmitted via an insecure connection - use HTTPS to keep them secure.');
       }
       return Ember.$.ajax({
-        url:         this.serverTokenEndpoint,
-        type:        'POST',
-        data:        data,
-        dataType:    'json',
-        contentType: 'application/x-www-form-urlencoded'
+        url         : url,
+        type        : 'POST',
+        data        : JSON.stringify(data),
+        dataType    : 'json',
+        contentType : 'application/json; charset=UTF-8'
       });
     }
 
@@ -60,8 +65,9 @@ export default {
     container.register('authorizer:sense', SenseAuthorizer);
     container.register('authenticator:sense', SenseAuthenticator);
     Ember.SimpleAuth.setup(container, application, {
-        authorizerFactory: 'authorizer:sense',
-        crossOriginWhitelist: ['https://api.sense-os.nl']
+        storeFactory         : 'session-store:local-storage',
+        authorizerFactory    : 'authorizer:sense',
+        crossOriginWhitelist : ['https://api.sense-os.nl']
       });
   }
 };
