@@ -2,19 +2,6 @@ var SenseAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
 
     serverTokenEndpoint: 'https://api.sense-os.nl/',
 
-    restore: function(properties) {
-      return new Ember.RSVP.Promise(function(resolve, reject) {
-          if (
-            !Ember.isEmpty(properties.auth_token) && 
-            !Ember.isEmpty(properties.auth_email)
-          ) {
-            resolve(properties);
-          } else {
-            reject();
-          }
-        });
-    },
-
     authenticate: function(credentials) {
       return new Ember.RSVP.Promise(function(resolve, reject) {
         var data = {
@@ -24,7 +11,7 @@ var SenseAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
         };
         this.makeRequest('login.json', data).then(function(response) {
           Ember.run(function() {
-            resolve(response);
+            resolve({token: response.session_id});
           });
         }, function(xhr, status, error) {
           Ember.run(function() {
@@ -55,6 +42,15 @@ var SenseAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
   });
 
 var SenseAuthorizer = Ember.SimpleAuth.Authorizers.Base.extend({
+    authorize: function(jqXHR, requestOptions) {
+      var accessToken = this.get('session.token');
+      if (this.get('session.isAuthenticated') && !Ember.isEmpty(accessToken)) {
+        if (!Ember.SimpleAuth.Utils.isSecureUrl(requestOptions.url)) {
+          Ember.Logger.warn('Credentials are transmitted via an insecure connection - use HTTPS to keep them secure.');
+        }
+        jqXHR.setRequestHeader('X-SESSION_ID', accessToken);
+      }
+    }
   });
 
 export default {
