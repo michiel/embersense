@@ -4,9 +4,9 @@ Router.map(function() {
   this.route('login');
   this.route('component-test');
   this.route('helper-test');
-  // this.resource('posts', function() {
+  this.resource('sensors', function() {
   //   this.route('new');
-  // });
+  });
 });
 
 export default Router;
