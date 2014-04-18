@@ -1,7 +1,7 @@
 <div>
-  <ul>
-  {{#each}}
-    <li>{{this}}</li>
-  {{/each}}
-  </ul>
+  {{# if session.isAuthenticated }}
+  Hey there, you have an active session. Well done!
+  {{else}}
+  Hey there, you don't have an active session. Try {{#link-to "login"}}logging in{{/link-to}}</li>
+  {{/if}}
 </div>
