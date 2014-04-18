@@ -25,6 +25,17 @@ var SenseAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
       return Ember.RSVP.resolve();
     },
 
+    restore: function(data) {
+      var _this = this;
+      return new Ember.RSVP.Promise(function(resolve, reject) {
+        if (!Ember.isEmpty(data.token)) {
+          resolve(data);
+        } else {
+          reject();
+        }
+      });
+    },
+
     makeRequest: function(path, data, resolve, reject) {
       var url = this.serverTokenEndpoint + path;
       if (!Ember.SimpleAuth.Utils.isSecureUrl(url)) {
