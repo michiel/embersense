@@ -9,4 +9,8 @@
 
 window.ENV = window.ENV || {};
 
+window.ENV.Sense = {
+  apiserver : 'https://api.sense-os.nl/'
+};
+
 window.ENV.MODEL_FACTORY_INJECTIONS = true;

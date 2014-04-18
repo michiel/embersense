@@ -1,6 +1,6 @@
 var SenseAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
 
-    serverTokenEndpoint: 'https://api.sense-os.nl/',
+    serverTokenEndpoint: Ember.ENV.Sense.apiserver,
 
     authenticate: function(credentials) {
       return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -74,7 +74,7 @@ export default {
     Ember.SimpleAuth.setup(container, application, {
         storeFactory         : 'session-store:cookie',
         authorizerFactory    : 'authorizer:sense',
-        crossOriginWhitelist : ['https://api.sense-os.nl']
+        crossOriginWhitelist : [ Ember.ENV.Sense.apiserver ]
       });
   }
 };
