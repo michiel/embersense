@@ -8,5 +8,8 @@ export default DS.Model.extend({
     pager_type     : attr('string'),
     data_type      : attr('string'),
     data_type_id   : attr('string'),
-    data_structure : attr('string')
+    data_structure : attr('string'),
+    prettyName     : function() {
+      return this.get('display_name') || this.get('name');
+    }.property('name', 'display_name')
   });

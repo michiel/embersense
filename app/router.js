@@ -6,7 +6,10 @@ Router.map(function() {
   this.route('component-test');
   this.route('helper-test');
   this.resource('sensors', function() {
-  //   this.route('new');
+      this.resource('sensor', { path:'/:sensor_id' }, function() {
+          this.route('edit');
+        });
+    // this.route('create');
   });
 });
 
