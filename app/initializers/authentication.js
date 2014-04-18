@@ -61,7 +61,7 @@ export default {
     container.register('authorizer:sense', SenseAuthorizer);
     container.register('authenticator:sense', SenseAuthenticator);
     Ember.SimpleAuth.setup(container, application, {
-        storeFactory         : 'session-store:local-storage',
+        storeFactory         : 'session-store:cookie',
         authorizerFactory    : 'authorizer:sense',
         crossOriginWhitelist : ['https://api.sense-os.nl']
       });
