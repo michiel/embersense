@@ -1,8 +1,8 @@
 var attr = DS.attr;
 
 export default DS.Model.extend({
-    requester : attr('string'),
-    requestee : attr('string'),
+    requester : attr('shareuser'),
+    requestee : attr('shareuser'),
     reason    : attr('string'),
     message   : attr('string'),
     sensors   : attr('string'),
