@@ -1,0 +1,20 @@
+<div class="row">
+  <h1 style="text-align:center">Shares</h1>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <ul>
+    {{#each access in controller}}
+    <li>
+      {{#link-to "access" access}}
+        {{access.id}} / {{access.status}}
+      {{/link-to}}
+    </li>
+    {{/each}}
+    </ul>
+  </div>
+
+  <div class="col-sm-8">
+    {{ outlet }}
+  </div>
+</div>

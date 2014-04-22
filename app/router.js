@@ -13,6 +13,9 @@ Router.map(function() {
             });
         });
   });
+  this.resource('accesses', function() {
+      this.resource('access', { path:'/:access_id' });
+  });
 });
 
 export default Router;
