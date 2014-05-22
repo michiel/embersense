@@ -1,8 +1,21 @@
 <h2>Share</h2>
-<button {{ action "accept" }}>Accept</button>
-<button {{ action "withdraw" }}>Withdraw</button>
-<button {{ action "revoke" }}>Revoke</button>
-<button {{ action "reject" }}>Reject</button>
+<div>
+  <p>
+  This share is <i>{{ status }}</i> : 
+  {{#if isActive }}
+    {{#if isMine}}
+    <button {{ action "withdraw" }}>Withdraw</button>
+    {{else}}
+      {{#if isAccepted }}
+        <button {{ action "revoke" }}>Revoke</button>
+      {{else}}
+        <button {{ action "accept" }}>Accept</button>
+        <button {{ action "reject" }}>Reject</button>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+  </p>
+</div>
 
 <table class="table">
   <tr>
@@ -11,9 +24,6 @@
     </th>
     <th>
       To
-    </th>
-    <th>
-      Message
     </th>
     <th>
       Sensors
@@ -27,12 +37,18 @@
       {{requestee.email}}
     </td>
     <td>
-      {{message}}
-    </td>
-    <td>
-      {{sensors}}
+      <ul>
+        {{#each sensor in sensors}}
+        <li>{{sensor}}</li>
+        {{/each}}
     </td>
   </tr>
 </table>
+
+<hr>
+
+<h4>Message</h4>
+
+{{ message }}
 
 {{ outlet }}

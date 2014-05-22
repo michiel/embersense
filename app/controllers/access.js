@@ -1,8 +1,21 @@
 export default Ember.ObjectController.extend({
 
     isMine: function() {
-      this.get('model').get('requester.id') === this.get('session.id');;
-    }.property('isMine'),
+      return this.get('model.requester.email') === this.get('session.email');
+    }.property('model'),
+
+    isAccepted: function() {
+      return this.get('status') === 'accepted';
+    },
+
+    isActive: function() {
+      return !this.get('isInactive');
+    }.property('isInactive'),
+
+    isInactive: function() {
+      var status = this.get('model.status');
+      return (status === 'withdrawn') || (status === 'revoked') || (status === 'revoked');
+    }.property('model'),
 
     actions : {
       revoke : function() {
