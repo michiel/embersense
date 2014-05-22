@@ -11,7 +11,10 @@ var SenseAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
         };
         this.makeRequest('login.json', data).then(function(response) {
           Ember.run(function() {
-            resolve({token: response.session_id});
+            resolve({
+                token : response.session_id,
+                email : credentials.identification
+              });
           });
         }, function(xhr, status, error) {
           Ember.run(function() {
