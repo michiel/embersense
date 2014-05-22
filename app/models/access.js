@@ -5,6 +5,6 @@ export default DS.Model.extend({
     requestee : DS.hasOneFragment('requestee'),
     reason    : attr('string'),
     message   : attr('string'),
-    sensors   : attr('string'),
+    sensors   : attr('raw'),
     status    : attr('string')
   });
