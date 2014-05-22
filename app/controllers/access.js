@@ -14,7 +14,7 @@ export default Ember.ObjectController.extend({
 
     isInactive: function() {
       var status = this.get('model.status');
-      return (status === 'withdrawn') || (status === 'revoked') || (status === 'revoked');
+      return (status === 'withdrawn') || (status === 'revoked') || (status === 'rejected');
     }.property('model'),
 
     actions : {
