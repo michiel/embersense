@@ -1,6 +1,6 @@
 export default DS.Transform.extend({
     serialize: function(obj) {
-      return {
+      return Ember.isEmpty(obj) ? null : {
         id    : obj.get('id'),
         name  : obj.get('name'),
         email : obj.get('email')

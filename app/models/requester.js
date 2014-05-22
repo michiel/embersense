@@ -1,6 +1,6 @@
 var attr = DS.attr;
 
-export default DS.Model.extend({
+export default DS.ModelFragment.extend({
     email: attr('string')
   });
 

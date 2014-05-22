@@ -4,5 +4,8 @@ export default DS.RESTSerializer.extend({
         accesses: payload
       };
       return this._super(store, type, payload, requestType);
+    },
+    serializeIntoHash: function(hash, type, record, options) {
+      Ember.merge(hash, this.serialize(record, options));
     }
   });
