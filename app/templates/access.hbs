@@ -20,31 +20,35 @@
 </div>
 
 <table class="table">
-  <tr>
-    <th>
-      From (requestor)
-    </th>
-    <th>
-      To (requestee)
-    </th>
-    <th>
-      Sensors
-    </th>
-  </tr>
-  <tr>
-    <td>
-      {{requester.email}}
-    </td>
-    <td>
-      {{requestee.email}}
-    </td>
-    <td>
-      <ul>
-        {{#each sensor in sensors}}
-        <li>{{sensor}}</li>
-        {{/each}}
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>
+        From (requestor)
+      </th>
+      <th>
+        To (requestee)
+      </th>
+      <th>
+        Sensors
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        {{requester.email}}
+      </td>
+      <td>
+        {{requestee.email}}
+      </td>
+      <td>
+        <ul>
+          {{#each sensor in sensors}}
+          <li>{{sensor}}</li>
+          {{/each}}
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 <hr>
