@@ -3,14 +3,11 @@ var Router = Ember.Router.extend(); // ensure we don't share routes between all 
 Router.map(function() {
   this.route('about');
   this.route('login');
-  this.resource('sensors', function() {
-      this.resource('sensor', { path:'/:sensor_id' }, 
-        function() {
-          this.resource('sensordata', {
-              path: '/data/:data_id'
-            });
-        });
+  this.resource('sensors', { path: '/sensors' }, function() {
   });
+  this.resource('sensor', { path:'/sensors/:sensor_id' }, function() {
+      this.resource('data', { path: '/data' });
+    });
   this.resource('accesses', function() {
       this.resource('access', { path:'/:access_id' });
   });
