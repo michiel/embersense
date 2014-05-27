@@ -2,19 +2,56 @@
   <h1 style="text-align:center">Sensors ({{ totalSensors }}) </h1>
 </div>
 <div class="row">
-  <div class="col-sm-3">
-    <ul>
-    {{#each sensor in controller}}
-    <li>
-      {{#link-to "sensor" sensor}}
-        {{sensor.name}}
-      {{/link-to}}
-    </li>
-    {{/each}}
-    </ul>
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+
+    <table class="table">
+      <thead>
+      <th>
+        ID
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Device type
+      </th>
+      <th>
+        Data type
+      </th>
+      </thead>
+      <tbody>
+        {{#each sensor in controller}}
+        <tr>
+          <td>
+            {{sensor.id}}
+          </td>
+          <td>
+          {{#link-to "sensor" sensor}}
+            {{sensor.name}}
+          {{/link-to}}
+          </td>
+          <td>
+            {{sensor.device_type}}
+          </td>
+          <td>
+            {{sensor.data_type}}
+          </td>
+        </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+
+  </div>
+  <div class="col-md-3">
   </div>
 
-  <div class="col-sm-8">
+</div>
+
+<div class="row">
+  <div class="col-md-12">
     {{ outlet }}
   </div>
 </div>
