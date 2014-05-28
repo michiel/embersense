@@ -1,0 +1,10 @@
+<h3>Create a new sensor</h3>
+
+{{#form-for controller}}
+  {{input name placeholder="Name"}}
+  {{input type}}
+  {{input device_type}}
+  {{input data_type placeholder="json|float|string|..."}}
+  {{input data_struture as="text" placeholder="{}"}}
+  {{submit}}
+{{/form-for}}`

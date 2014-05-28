@@ -2,7 +2,7 @@
   <h1 style="text-align:center">Sensors ({{ totalSensors }}) </h1>
 </div>
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-1">
   </div>
   <div class="col-md-6">
 
@@ -45,13 +45,17 @@
     </table>
 
   </div>
-  <div class="col-md-3">
+  <div class="col-md-5">
+    {{#link-to "sensors.new" }}
+    <button>
+      New sensor
+    </button>
+    {{/link-to}}
+    {{ outlet }}
   </div>
-
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    {{ outlet }}
   </div>
 </div>

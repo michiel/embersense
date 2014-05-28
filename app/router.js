@@ -4,12 +4,15 @@ Router.map(function() {
   this.route('about');
   this.route('login');
   this.resource('sensors', { path: '/sensors' }, function() {
+      this.route('new');
   });
   this.resource('sensor', { path:'/sensors/:sensor_id' }, function() {
       this.route('data', { path: '/data' });
     });
   this.resource('accesses', function() {
+
       this.resource('access', { path:'/:access_id' });
+
   });
 });
 
