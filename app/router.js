@@ -4,8 +4,8 @@ Router.map(function() {
   this.route('about');
   this.route('login');
   this.resource('sensors', { path: '/sensors' }, function() {
-      this.route('new');
   });
+  this.route('newsensor');
   this.resource('sensor', { path:'/sensors/:sensor_id' }, function() {
       this.route('data', { path: '/data' });
     });

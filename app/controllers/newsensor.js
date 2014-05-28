@@ -9,7 +9,7 @@ export default Ember.ObjectController.extend(Ember.Validations.Mixin, {
     },
     actions: {
       submit: function() {
-        alert('Saved!');
+        alert('Saved! (Not really, but thanks for trying!)');
       }
     }
 });
