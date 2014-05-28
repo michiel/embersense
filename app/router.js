@@ -6,7 +6,7 @@ Router.map(function() {
   this.resource('sensors', { path: '/sensors' }, function() {
   });
   this.resource('sensor', { path:'/sensors/:sensor_id' }, function() {
-      this.resource('data', { path: '/data' });
+      this.route('data', { path: '/data' });
     });
   this.resource('accesses', function() {
       this.resource('access', { path:'/:access_id' });

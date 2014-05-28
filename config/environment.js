@@ -9,6 +9,10 @@
 
 window.ENV = window.ENV || {};
 
+window.ENV.FEATURES = {
+  'query-params-new': true
+};
+
 window.ENV.Sense = {
   apiserver : 'https://api.sense-os.nl/'
 };
