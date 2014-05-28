@@ -1,0 +1,44 @@
+label {
+  float: left;
+  width: 25%;
+  text-align: right;
+  position: relative;
+  top: 9px;
+  margin-top: 2px;
+}
+
+input {
+  margin-left: 3%;
+  margin-right: 3%;
+  padding: 10px 15px;
+  width: 36%;
+  border: 1px solid;
+  margin-top: 2px;
+}
+
+textarea {
+  margin-left: 3%;
+  margin-right: 3%;
+  padding: 10px 15px;
+  width: 36%;
+  border: 1px dashed;
+  margin-top: 2px;
+}
+
+input[type="submit"] { /* , button { */
+  margin-left: 28%;
+  padding: 10px 15px;
+  width: 120px;
+  border: 1px solid #fb755a;
+  font-family: sans-serif;
+  font-size: 16px;
+  background-color: #fb755a;
+  color: white;
+  cursor: pointer;
+}
+
+input[disabled] {
+  cursor: default;
+  background-color: slategray;
+  border: 1px solid slategray;
+}

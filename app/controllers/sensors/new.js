@@ -6,7 +6,7 @@ export default Ember.ObjectController.extend(Ember.Validations.Mixin, {
           minimum: 5
         }
       }
-    }
+    },
     actions: {
       submit: function() {
         alert('Saved!');
