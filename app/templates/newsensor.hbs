@@ -3,8 +3,9 @@
 {{#form-for controller}}
   {{input name placeholder="Name"}}
   {{input type placeholder="Sensor type"}}
+  {{input display_name placeholder="Nice name"}}
   {{input device_type placeholder="Device type"}}
   {{input data_type hint="json|float|string|..."}}
   {{input data_structure as="text" placeholder="{}"}}
   {{submit}}
-{{/form-for}}`
+{{/form-for}}

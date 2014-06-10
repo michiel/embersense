@@ -9,7 +9,15 @@ export default Ember.ObjectController.extend(Ember.Validations.Mixin, {
     },
     actions: {
       submit: function() {
-        alert('Saved! (Not really, but thanks for trying!)');
+        var model = this.get('model');
+        model.save().then(
+          function() {
+            this.transitionToRoute('sensor.index', model);
+          }.bind(this),
+          function(err) {
+            console.error('Smoke me a kipper : ', err);
+          }
+        );
       }
     }
 });
