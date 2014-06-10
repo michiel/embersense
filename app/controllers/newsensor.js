@@ -15,6 +15,7 @@ export default Ember.ObjectController.extend(Ember.Validations.Mixin, {
             this.transitionToRoute('sensor.index', model);
           }.bind(this),
           function(err) {
+            /* global console */
             console.error('Smoke me a kipper : ', err);
           }
         );

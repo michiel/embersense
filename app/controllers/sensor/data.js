@@ -16,7 +16,7 @@ export default Ember.ArrayController.extend({
       var page       = this.get('page');
       var sort       = this.get('sort');
 
-      return datePoints.filterProperty('start_date', start_date);
+      return dataPoints.filterProperty('start_date', start_date);
 
     }.property('start_date', 'end_date', 'per_page', 'page', 'sort', 'model'),
 

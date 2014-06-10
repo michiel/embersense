@@ -1,7 +1,7 @@
 export default {
-  name: "twitter-bootstrap",
-  after: "store",
-  initialize: function(container, application) {
+  name       : "twitter-bootstrap",
+  after      : "store",
+  initialize : function(container, application) {
 //     Ember.EasyForm.Config.registerWrapper('default', {
 //       inputTemplate        : 'easyFfrm/bootstrap-input',
 //       controlsWrapperClass : 'controls',
@@ -13,4 +13,4 @@ export default {
 //       inputClass           : 'control-group'
 //     });
   }
-}
+};
