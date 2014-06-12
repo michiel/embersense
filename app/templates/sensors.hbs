@@ -49,6 +49,12 @@
             {{sensor.data_type}}
           </td>
         </tr>
+        {{else}}
+        <tr>
+          <td colspan="4">
+            No sensors found.
+          </td>
+        </tr>
         {{/each}}
 
       </tbody>
